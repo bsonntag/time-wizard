@@ -7,6 +7,17 @@ class TimeTracker {
     this.tracks = [];
   }
 
+  projects() {
+    return [].concat(this.current, this.tracks)
+      .reduce((projects, { project }) => {
+        if (projects.includes(project)) {
+          return projects;
+        }
+
+        return projects.concat(project);
+      }, []);
+  }
+
   start(project, tasks) {
     if (!project || !tasks) {
       throw new Error('Project and tasks are required');

@@ -10,6 +10,32 @@ describe('TimeTracker', () => {
     });
   });
 
+  describe('projects', () => {
+    let timeTracker;
+
+    beforeEach(() => {
+      timeTracker = new TimeTracker();
+
+      timeTracker.start('foo', 'bar');
+      timeTracker.stop();
+      timeTracker.start('baz', 'bez');
+      timeTracker.stop();
+      timeTracker.start('foo', 'bar');
+      timeTracker.stop();
+      timeTracker.start('biz', 'boz');
+    });
+
+    it('returns a list of project names', () => {
+      const projects = timeTracker.projects();
+
+      expect(projects).toEqual(expect.arrayContaining([
+        'baz',
+        'biz',
+        'foo'
+      ]));
+    });
+  });
+
   describe('start', () => {
     let timeTracker;
 
