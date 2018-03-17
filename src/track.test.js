@@ -16,6 +16,12 @@ describe('Track', () => {
       expect(track.start).toEqual(123);
     });
 
+    it('creates a track with the specified stop property', () => {
+      const track = new Track('foo', ['bar'], 123, 321);
+
+      expect(track.stop).toEqual(321);
+    });
+
     it('creates a track with the current time as the start property', () => {
       const now = Date.now();
       const track = new Track('foo', ['bar']);
