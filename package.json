@@ -12,7 +12,9 @@
     "test": "jest",
     "test-watch": "jest --watch --notify"
   },
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^2.15.0"
+  },
   "devDependencies": {
     "eslint": "^4.19.0",
     "eslint-config-seegno": "^10.0.0",
