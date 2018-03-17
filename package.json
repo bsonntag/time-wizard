@@ -9,12 +9,14 @@
   "author": "Benjamim Sonntag <benjamimsonntag@gmail.com>",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest",
+    "test-watch": "jest --watch --notify"
   },
   "dependencies": {},
   "devDependencies": {
     "eslint": "^4.19.0",
     "eslint-config-seegno": "^10.0.0",
+    "jest": "^22.4.2",
     "sort-package-json": "^1.11.0"
   }
 }
