@@ -1,3 +1,3 @@
-const TimeTracker = require('./time-tracker');
+const cli = require('./cli');
 
-module.exports = TimeTracker;
+module.exports = cli;
