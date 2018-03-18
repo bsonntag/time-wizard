@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+const { formatDuration } = require('../utils/time');
 const { readTracks } = require('../utils/io');
 const Project = require('../project');
 
@@ -19,23 +20,33 @@ function projectsFromTracks(tracks) {
 }
 
 function logProject(project) {
-  console.log('%s - %s', project.name, project.totalTime);
+  console.log('%s - %s', project.name, formatDuration(project.totalTime));
 
   project.tasks.forEach((duration, task) => {
-    console.log('\t[%s - %s]', task, duration);
+    console.log('  [%s - %s]', task, formatDuration(duration));
   });
 
   console.log();
 }
 
-function report() {
+function report(options = {}) {
+  const {
+    from = 0,
+    to = Date.now()
+  } = options;
+
+  const startDate = from;
+  const endDate = to;
+
   return readTracks()
+    .then(tracks => tracks.filter(track => track.isBetween(startDate, endDate)))
     .then(tracks => {
-      projectsFromTracks(tracks).forEach(logProject);
+      projectsFromTracks(tracks)
+        .forEach(logProject);
 
       const totalTime = tracks.reduce((total, track) => total + track.duration(), 0);
 
-      console.log('Total time: %s', totalTime);
+      console.log('Total time: %s', formatDuration(totalTime));
     });
 }
 

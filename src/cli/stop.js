@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+const { formatFromNow } = require('../utils/time');
 const {
   readCurrentTrack,
   readTracks,
@@ -22,10 +23,10 @@ function stop() {
       current.end(timestamp);
 
       console.log(
-        'Stopping project %s [%s], started at %s.',
+        'Stopping project %s [%s], started %s.',
         current.project,
         current.tasks.join(', '),
-        new Date(current.start).toLocaleTimeString('pt-PT')
+        formatFromNow(current.start)
       );
 
       const newTracks = tracks.concat(current);

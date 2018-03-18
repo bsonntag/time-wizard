@@ -21,8 +21,10 @@ program
 
 program
   .command('report')
-  .action(() => {
-    cli.report();
+  .option('--from <startDate>', 'Start date')
+  .option('--to <endDate>', 'End date')
+  .action(options => {
+    cli.report(options);
   });
 
 program

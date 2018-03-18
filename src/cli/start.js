@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+const { formatTime } = require('../utils/time');
 const { writeCurrentTrack } = require('../utils/io');
 const Track = require('../track');
 const TrackError = require('../track-error');
@@ -13,7 +14,7 @@ function start(project, tasks) {
         'Starting project %s [%s] at %s.',
         track.project,
         track.tasks.join(', '),
-        new Date(track.start).toLocaleTimeString('pt-PT')
+        formatTime(track.start)
       );
     })
     .catch(error => {

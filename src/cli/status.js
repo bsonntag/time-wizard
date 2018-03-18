@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+const { formatFromNow } = require('../utils/time');
 const { readCurrentTrack } = require('../utils/io');
 
 function status() {
@@ -12,10 +13,10 @@ function status() {
       }
 
       console.log(
-        'Project %s [%s], started at %s.',
+        'Project %s [%s] started %s.',
         current.project,
         current.tasks.join(', '),
-        new Date(current.start).toLocaleTimeString('pt-PT')
+        formatFromNow(current.start)
       );
     });
 }
