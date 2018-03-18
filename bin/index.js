@@ -14,6 +14,12 @@ program
   });
 
 program
+  .command('restart')
+  .action(() => {
+    cli.restart();
+  });
+
+program
   .command('status')
   .action(() => {
     cli.status();
