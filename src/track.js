@@ -1,3 +1,5 @@
+const { isBetween } = require('./utils/time');
+
 class Track {
 
   constructor(project, tasks, start = Date.now(), stop) {
@@ -13,6 +15,10 @@ class Track {
 
   end(stop = Date.now()) {
     this.stop = stop;
+  }
+
+  isBetween(start, end) {
+    return isBetween(this.start, start, end) && isBetween(this.stop, start, end);
   }
 
 }
