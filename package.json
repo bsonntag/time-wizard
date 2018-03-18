@@ -16,6 +16,10 @@
   "bin": {
     "time-wizard": "./bin/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bsonntag/time-wizard"
+  },
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch --notify"
@@ -29,5 +33,8 @@
     "eslint-config-seegno": "^10.0.0",
     "jest": "^22.4.2",
     "sort-package-json": "^1.11.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   }
 }
