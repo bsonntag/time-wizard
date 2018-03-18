@@ -4,7 +4,7 @@ const fs = require('./fs');
 const os = require('os');
 const path = require('path');
 
-const dir = path.join(os.homedir(), '.time-tracker');
+const dir = path.join(os.homedir(), '.time-wizard');
 const currentTrackFile = () => path.join(dir, 'current.json');
 const tracksFile = () => path.join(dir, 'tracks.json');
 
