@@ -3,16 +3,19 @@
   "version": "0.0.0",
   "description": "Time tracking terminal app",
   "keywords": [
-    "time tracking",
-    "time",
-    "tracking",
-    "track",
+    "cli",
     "tasks",
-    "cli"
+    "time",
+    "time tracking",
+    "track",
+    "tracking"
   ],
   "license": "MIT",
   "author": "Benjamim Sonntag <benjamimsonntag@gmail.com>",
-  "main": "index.js",
+  "main": "./src/index.js",
+  "bin": {
+    "time-wizard": "./bin/index.js"
+  },
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch --notify"
