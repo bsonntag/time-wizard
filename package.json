@@ -1,9 +1,14 @@
 {
-  "name": "time-tracking",
+  "name": "time-wizard",
   "version": "0.0.0",
   "description": "Time tracking terminal app",
   "keywords": [
-    "time-tracking"
+    "time tracking",
+    "time",
+    "tracking",
+    "track",
+    "tasks",
+    "cli"
   ],
   "license": "MIT",
   "author": "Benjamim Sonntag <benjamimsonntag@gmail.com>",
@@ -13,7 +18,8 @@
     "test-watch": "jest --watch --notify"
   },
   "dependencies": {
-    "commander": "^2.15.0"
+    "commander": "^2.15.0",
+    "moment": "^2.21.0"
   },
   "devDependencies": {
     "eslint": "^4.19.0",
