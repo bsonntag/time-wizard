@@ -1,6 +1,10 @@
 const moment = require('moment');
 const util = require('util');
 
+function formatDateTime(date) {
+  return moment(date).format('L LTS');
+}
+
 function formatDuration(time) {
   const duration = moment.duration(time);
 
@@ -17,16 +21,29 @@ function formatFromNow(date) {
 }
 
 function formatTime(date) {
-  return new Date(date).toLocaleTimeString('pt-PT');
+  return moment(date).format('LTS');
 }
 
 function isBetween(date, start, end) {
-  return moment(date).isBetween(start, end);
+  const dateMoment = moment(date);
+
+  return dateMoment.isSameOrAfter(start) && dateMoment.isBefore(end);
+}
+
+function startOfDay(date) {
+  return moment(date).startOf('day');
+}
+
+function startOfNextDay(date) {
+  return moment(date).add(1, 'days').startOf('day');
 }
 
 module.exports = {
+  formatDateTime,
   formatDuration,
   formatFromNow,
   formatTime,
-  isBetween
+  isBetween,
+  startOfDay,
+  startOfNextDay
 };
