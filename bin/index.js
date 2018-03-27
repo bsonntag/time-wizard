@@ -29,6 +29,7 @@ program
   .command('report')
   .option('--from <startDate>', 'Start date')
   .option('--to <endDate>', 'End date')
+  .option('--today', 'Show activity of the current day')
   .action(options => {
     cli.report(options);
   });

@@ -1,8 +1,38 @@
 /* eslint-disable no-console */
 
-const { formatDuration } = require('../utils/time');
+const {
+  formatDateTime,
+  formatDuration,
+  startOfDay,
+  startOfNextDay
+} = require('../utils/time');
+
 const { readTracks } = require('../utils/io');
 const Project = require('../project');
+
+function getStartAndEndDates(options) {
+  if (options.today) {
+    options.from = startOfDay();
+    options.to = startOfNextDay();
+  }
+
+  const { from, to } = options;
+
+  if (from && to) {
+    console.log(
+      'Reporting activity from %s until %s\n',
+      formatDateTime(from),
+      formatDateTime(to)
+    );
+  } else {
+    console.log('Reporting all activity\n');
+  }
+
+  return {
+    from: from || new Date(0),
+    to: to || new Date()
+  };
+}
 
 function projectsFromTracks(tracks) {
   return tracks.reduce((projects, track) => {
@@ -30,16 +60,10 @@ function logProject(project) {
 }
 
 function report(options = {}) {
-  const {
-    from = 0,
-    to = Date.now()
-  } = options;
-
-  const startDate = from;
-  const endDate = to;
+  const { from, to } = getStartAndEndDates(options);
 
   return readTracks()
-    .then(tracks => tracks.filter(track => track.isBetween(startDate, endDate)))
+    .then(tracks => tracks.filter(track => track.isBetween(from, to)))
     .then(tracks => {
       projectsFromTracks(tracks)
         .forEach(logProject);
