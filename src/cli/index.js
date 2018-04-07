@@ -6,6 +6,7 @@ const restart = require('./restart');
 const start = require('./start');
 const status = require('./status');
 const stop = require('./stop');
+const tasks = require('./tasks');
 
 module.exports = {
   projects,
@@ -13,5 +14,6 @@ module.exports = {
   restart,
   start,
   status,
-  stop
+  stop,
+  tasks
 };

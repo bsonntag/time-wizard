@@ -42,4 +42,10 @@ program
     cli.projects();
   });
 
+program
+  .command('tasks')
+  .action(() => {
+    cli.tasks();
+  });
+
 program.parse(process.argv);
