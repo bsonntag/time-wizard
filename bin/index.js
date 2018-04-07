@@ -4,6 +4,12 @@ const cli = require('../src/cli');
 const program = require('commander');
 
 program
+  .command('cancel')
+  .action(() => {
+    cli.cancel();
+  });
+
+program
   .command('start <project> [tasks...]')
   .action((project, tasks) => {
     cli.start(project, tasks);
