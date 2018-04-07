@@ -17,7 +17,7 @@ function stop() {
     .all([readCurrentTrack(), readTracks()])
     .then(([current, tracks]) => {
       if (!current) {
-        throw new TrackError('No current track', TrackError.NO_CURRENT_TRACK);
+        throw new TrackError('No track is running', TrackError.NO_CURRENT_TRACK);
       }
 
       current.end(timestamp);
@@ -36,7 +36,7 @@ function stop() {
     .then(() => removeCurrectTrack())
     .catch(error => {
       if (error instanceof TrackError && error.code === TrackError.NO_CURRENT_TRACK) {
-        console.error('No track is running');
+        console.error(error.message);
       } else {
         console.error('There was an error', error);
       }
