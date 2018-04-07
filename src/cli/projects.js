@@ -6,18 +6,11 @@ function projects() {
   return Promise
     .all([readCurrentTrack(), readTracks()])
     .then(([current, tracks]) => {
-      const projectsNames = tracks
+      tracks
         .concat(current)
         .filter(track => !!track)
-        .reduce((result, { project }) => {
-          if (result.includes(project)) {
-            return result;
-          }
-
-          return result.concat(project);
-        }, []);
-
-      console.log(projectsNames.join('\n'));
+        .reduce((set, { project }) => set.add(project), new Set())
+        .forEach(project => console.log(project));
     });
 }
 
