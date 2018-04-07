@@ -1,16 +1,17 @@
+const { isDevelopment } = require('./env');
 const Track = require('../track');
 const TrackError = require('../track-error');
 const fs = require('./fs');
 const os = require('os');
 const path = require('path');
 
-const dir = path.join(os.homedir(), '.time-wizard');
-const currentTrackFile = () => path.join(dir, 'current.json');
-const tracksFile = () => path.join(dir, 'tracks.json');
+const dir = path.join(isDevelopment ? 'node_modules' : os.homedir(), '.time-wizard');
+const currentTrackFile = path.join(dir, 'current.json');
+const tracksFile = path.join(dir, 'tracks.json');
 
 function writeCurrentTrack(track) {
   return fs.ensureDir(dir)
-    .then(() => fs.writeFile(currentTrackFile(), JSON.stringify(track), { flag: 'wx' }))
+    .then(() => fs.writeFile(currentTrackFile, JSON.stringify(track), { flag: 'wx' }))
     .catch(error => {
       if (error.code === 'EEXIST') {
         throw new TrackError('There is already one current track', TrackError.CURRENT_TRACK_EXISTS);
@@ -22,11 +23,11 @@ function writeCurrentTrack(track) {
 
 function writeTracks(tracks) {
   return fs.ensureDir(dir)
-    .then(() => fs.writeFile(tracksFile(), JSON.stringify(tracks)));
+    .then(() => fs.writeFile(tracksFile, JSON.stringify(tracks)));
 }
 
 function readCurrentTrack() {
-  return fs.readFile(currentTrackFile())
+  return fs.readFile(currentTrackFile)
     .then(
       data => {
         const values = JSON.parse(data);
@@ -44,7 +45,7 @@ function readCurrentTrack() {
 }
 
 function readTracks() {
-  return fs.readFile(tracksFile())
+  return fs.readFile(tracksFile)
     .then(
       data => {
         const values = JSON.parse(data);
@@ -64,7 +65,7 @@ function readTracks() {
 }
 
 function removeCurrectTrack() {
-  return fs.unlink(currentTrackFile());
+  return fs.unlink(currentTrackFile);
 }
 
 module.exports = {

@@ -21,6 +21,7 @@
     "url": "https://github.com/bsonntag/time-wizard"
   },
   "scripts": {
+    "start": "NODE_ENV=development node ./bin/index.js",
     "test": "jest",
     "test-watch": "jest --watch --notify"
   },
