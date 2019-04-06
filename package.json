@@ -10,15 +10,15 @@
     "track",
     "tracking"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bsonntag/time-wizard"
+  },
   "license": "MIT",
   "author": "Benjamim Sonntag <benjamimsonntag@gmail.com>",
   "main": "./src/index.js",
   "bin": {
     "time-wizard": "./bin/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bsonntag/time-wizard"
   },
   "scripts": {
     "lint": "eslint .",
@@ -27,14 +27,14 @@
     "test-watch": "jest --watch --notify"
   },
   "dependencies": {
-    "commander": "^2.15.0",
-    "moment": "^2.21.0"
+    "commander": "^2.20.0",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-seegno": "^13.0.0",
-    "jest": "^22.4.2",
-    "sort-package-json": "^1.11.0"
+    "jest": "^24.7.1",
+    "sort-package-json": "^1.22.1"
   },
   "engines": {
     "node": ">=8.0.0"
